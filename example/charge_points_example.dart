@@ -1,7 +1,7 @@
 import 'package:charge_points/charge_points.dart';
 
 void main() async {
-  final String key = '8b87d211-f3a3-4a52-8400-389e29bd81be';
+  final String key = '<your-key>';
   final ChargePointsClient client = ChargePointsClient(key);
   final RetivePoiParams params = RetivePoiParams();
   final List<POI> list = await client.retrievePoiList(
