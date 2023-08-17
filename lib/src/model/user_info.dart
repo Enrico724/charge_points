@@ -2,7 +2,7 @@ class UserInfo {
   int id;
   String username;
   int reputationPoints;
-  String profileImageUrl;
+  String? profileImageUrl;
 
   UserInfo.fromJson(Map json)
       : id = json['ID'],

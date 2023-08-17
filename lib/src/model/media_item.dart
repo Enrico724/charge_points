@@ -1,8 +1,18 @@
+import 'dart:convert';
+
 import 'package:charge_points/src/model/user_info.dart';
+
+class MediaItems {
+  static List<MediaItem> fromJson(dynamic json) {
+    if (json.runtimeType == Null) return [];
+    final data = json is Iterable ? json : jsonDecode(json) as Iterable;
+    return data.map((e) => MediaItem.fromJson(e)).toList();
+  }
+}
 
 class MediaItem {
   int id;
-  String chargePointId;
+  int chargePointId;
   String itemURL;
   String itemThumbnailURL;
   String comment;
@@ -24,5 +34,5 @@ class MediaItem {
         isFeaturedItem = json['IsFeaturedItem'],
         isExternalResource = json['IsExternalResource'],
         user = UserInfo.fromJson(json['User']),
-        dateCreated = json['DateCreated'];
+        dateCreated = DateTime.parse(json['DateCreated']);
 }

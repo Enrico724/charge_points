@@ -1,7 +1,7 @@
 class DataProviderStatusType {
   bool isProviderEnabled;
   int id;
-  String description;
+  String? description;
 
   DataProviderStatusType.fromJson(Map json)
       : isProviderEnabled = json['IsProviderEnabled'],
@@ -11,13 +11,13 @@ class DataProviderStatusType {
 
 class DataProvider {
   String websiteUrl;
-  String comments;
+  String? comments;
   DataProviderStatusType dataProviderStatusType;
   bool isRestrictedEdit;
   bool isOpenDataLicensed;
-  bool isApprovedImport;
-  String license;
-  DateTime dateLastImported;
+  bool? isApprovedImport;
+  String? license;
+  DateTime? dateLastImported;
   int id;
   String title;
 
@@ -30,7 +30,9 @@ class DataProvider {
         isOpenDataLicensed = json['IsOpenDataLicensed'],
         isApprovedImport = json['IsApprovedImport'],
         license = json['License'],
-        dateLastImported = json['DateLastImported'],
+        dateLastImported = json['DateLastImported'] == null
+            ? null
+            : DateTime.parse(json['DateLastImported']),
         id = json['ID'],
         title = json['Title'];
 }

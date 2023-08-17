@@ -1,16 +1,16 @@
 import 'package:charge_points/src/model/address_info.dart';
 
 class OperatorInfo {
-  String websiteUrl;
-  String comments;
-  String phonePrimaryContact;
-  String phoneSecondaryContact;
-  bool isPrivateIndividual;
-  AddressInfo addressInfo;
-  String bookingUrl;
-  String contactEmail;
-  String faultReportEmail;
-  bool isRestrictedEdit;
+  String? websiteUrl;
+  String? comments;
+  String? phonePrimaryContact;
+  String? phoneSecondaryContact;
+  bool? isPrivateIndividual;
+  AddressInfo? addressInfo;
+  String? bookingUrl;
+  String? contactEmail;
+  String? faultReportEmail;
+  bool? isRestrictedEdit;
   int id;
   String title;
 
@@ -20,7 +20,9 @@ class OperatorInfo {
         phonePrimaryContact = json['PhonePrimaryContact'],
         phoneSecondaryContact = json['PhoneSecondaryContact'],
         isPrivateIndividual = json['IsPrivateIndividual'],
-        addressInfo = AddressInfo.fromJson(json['AddressInfo']),
+        addressInfo = json['AddressInfo'] == null
+            ? null
+            : AddressInfo.fromJson(json['AddressInfo']),
         bookingUrl = json['BookingURL'],
         contactEmail = json['ContactEmail'],
         faultReportEmail = json['FaultReportEmail'],

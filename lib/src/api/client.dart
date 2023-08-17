@@ -12,18 +12,16 @@ class ChargePointsClient {
 
   static Future<List<POI>> retrievePoiList(
     BoundingBox boundingBox,
-    String chargepointid,
-    String client,
     String countryCode,
     List<String> countryID, {
+    String chargepointid = '',
     bool compact = false,
     List<int> connectionTypeID = const [],
   }) async {
-    print('boundingBox: $boundingBox');
     final params = {
       'boundingbox': boundingBox.toString(),
       'chargepointid': chargepointid,
-      'client': client,
+      'client': 'app',
       'countrycode': countryCode,
       'countryid': countryID.toString(),
       'compact': compact.toString(),
@@ -35,7 +33,6 @@ class ChargePointsClient {
       'Accept': 'application/json',
       'User-Agent': 'Chrome'
     });
-    print(response.body);
     final Iterable data = jsonDecode(response.body);
     List<POI> list = data.map((e) => POI.fromJson(e)).toList();
     return list;

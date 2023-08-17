@@ -4,15 +4,14 @@ import 'package:test/test.dart';
 
 void main() {
   group('Model Test', () {
-    test('Retrive Pois', () async {
-      final pois = await ChargePointsClient.retrievePoiList(
-        BoundingBox(Corner(37.658505, 14.992467), Corner(37.465824, 15.140327)),
+    test('Retrive Pois Around Globe', () async {
+      final topLeftCorner = Corner(90, -180);
+      final bottomRightCorner = Corner(-90, 180);
+      await ChargePointsClient.retrievePoiList(
+        BoundingBox(topLeftCorner, bottomRightCorner),
         '',
-        '',
-        'IT',
-        ['IT'],
+        [],
       );
-      print(pois);
     });
   });
 }

@@ -1,20 +1,20 @@
 class AddressInfo {
   int id;
-  String addressLine1;
-  String addressLine2;
-  String town;
-  String stateOrProvince;
-  String postcode;
-  String countryId;
+  String? addressLine1;
+  String? addressLine2;
+  String? town;
+  String? stateOrProvince;
+  String? postcode;
+  int countryId;
   Country country;
   double latitude;
   double longitude;
-  String contactTelephone1;
-  String contactTelephone2;
-  String contactEmail;
-  String accessComments;
-  String relatedUrl;
-  double distance;
+  String? contactTelephone1;
+  String? contactTelephone2;
+  String? contactEmail;
+  String? accessComments;
+  String? relatedUrl;
+  double? distance;
   int distanceUnit;
   String title;
 

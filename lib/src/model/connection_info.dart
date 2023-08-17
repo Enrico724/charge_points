@@ -1,42 +1,54 @@
+class Connections {
+  static List<ConnectionInfo> fromJson(dynamic json) {
+    if (json.runtimeType == Null) return [];
+    final data = json as Iterable;
+    return data.map((e) => ConnectionInfo.fromJson(e)).toList();
+  }
+}
+
 class ConnectionInfo {
   int id;
   int connectionTypeId;
   ConnectionType connectionType;
-  String reference;
-  int statusTypeId;
-  StatusType statusType;
-  int levelId;
-  Level level;
-  int amps;
-  double voltage;
-  double powerKw;
-  int currentTypeId;
-  CurrentType currentType;
-  int quantity;
-  String comments;
+  String? reference;
+  int? statusTypeId;
+  StatusType? statusType;
+  int? levelId;
+  Level? level;
+  int? amps;
+  int? voltage;
+  double? powerKw;
+  int? currentTypeId;
+  CurrentType? currentType;
+  int? quantity;
+  String? comments;
 
   ConnectionInfo.fromJson(Map json)
       : id = json['ID'],
         connectionTypeId = json['ConnectionTypeID'],
-        connectionType = json['ConnectionType'],
+        connectionType = ConnectionType.fromJson(json['ConnectionType']),
         reference = json['Reference'],
         statusTypeId = json['StatusTypeID'],
-        statusType = json['StatusType'],
+        statusType = json['StatusType'] == null
+            ? null
+            : StatusType.fromJson(json['StatusType']),
         levelId = json['LevelID'],
-        level = json['Level'],
+        level = json['Level'] == null ? null : Level.fromJson(json['Level']),
         amps = json['Amps'],
         voltage = json['Voltage'],
         powerKw = json['PowerKW'],
         currentTypeId = json['CurrentTypeID'],
-        currentType = json['CurrentType'],
+        currentType = json['CurrentType'] == null
+            ? null
+            : CurrentType.fromJson(json['CurrentType']),
         quantity = json['Quantity'],
         comments = json['Comments'];
 }
 
 class ConnectionType {
-  String formalName;
-  bool isDiscontinued;
-  bool isObsolete;
+  String? formalName;
+  bool? isDiscontinued;
+  bool? isObsolete;
   int id;
   String title;
 
@@ -49,7 +61,7 @@ class ConnectionType {
 }
 
 class StatusType {
-  bool isOperational;
+  bool? isOperational;
   bool isUserSelectable;
   int id;
   String title;

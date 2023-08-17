@@ -1,37 +1,51 @@
+import 'dart:convert';
+
 import 'package:charge_points/src/model/user_info.dart';
 
+class UserComments {
+  static List<UserComment> fromJson(dynamic json) {
+    if (json.runtimeType == Null) return [];
+    final data = json is Iterable ? json : jsonDecode(json) as Iterable;
+    return data.map((e) => UserComment.fromJson(e)).toList();
+  }
+}
+
 class UserComment {
-  String id;
+  int id;
   int chargePointId;
   int commentTypeId;
-  UserCommentType userCommentType;
+  UserCommentType? userCommentType;
   String userName;
-  String comment;
-  String relatedUrl;
+  String? comment;
+  String? relatedUrl;
   DateTime dateCreated;
-  UserInfo user;
-  int checkinStatusTypeId;
-  CheckinStatusType checkinStatusType;
+  UserInfo? user;
+  int? checkinStatusTypeId;
+  CheckinStatusType? checkinStatusType;
 
   UserComment.fromJson(Map json)
       : id = json['ID'],
         chargePointId = json['ChargePointID'],
         commentTypeId = json['CommentTypeID'],
-        userCommentType = UserCommentType.fromJson(json['UserCommentType']),
+        userCommentType = json['UserCommentType'] == null
+            ? null
+            : UserCommentType.fromJson(json['UserCommentType']),
         userName = json['UserName'],
         comment = json['Comment'],
         relatedUrl = json['RelatedURL'],
-        dateCreated = json['DateCreated'],
-        user = UserInfo.fromJson(json['User']),
+        dateCreated = DateTime.parse(json['DateCreated']),
+        user = json['User'] == null ? null : UserInfo.fromJson(json['User']),
         checkinStatusTypeId = json['CheckinStatusTypeID'],
-        checkinStatusType =
-            CheckinStatusType.fromJson(json['CheckinStatusType']);
+        checkinStatusType = json['CheckinStatusType'] == null
+            ? null
+            : CheckinStatusType.fromJson(json['CheckinStatusType']);
 }
 
 class CheckinStatusType {
   int id;
   String title;
-  bool isAutomatedCheckin, isPositive;
+  bool? isAutomatedCheckin;
+  bool? isPositive;
 
   CheckinStatusType.fromJson(Map json)
       : id = json['ID'],
