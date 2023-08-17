@@ -7,10 +7,11 @@ import 'package:charge_points/src/model/poi.dart';
 import 'package:http/http.dart' as http;
 
 class ChargePointsClient {
-  ChargePointsClient._();
-  static const key = '8b87d211-f3a3-4a52-8400-389e29bd81be';
+  final String key;
 
-  static Future<List<POI>> retrievePoiList(
+  ChargePointsClient(this.key);
+
+  Future<List<POI>> retrievePoiList(
     BoundingBox boundingBox,
     String countryCode,
     List<String> countryID, {
