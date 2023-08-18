@@ -1,6 +1,6 @@
 name: charge_points
 description: A Charge Points client dart wrapper. For more information about API, go to https://openchargemap.org/site/develop/api#/
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/Enrico724/charge_points
 
 environment:
