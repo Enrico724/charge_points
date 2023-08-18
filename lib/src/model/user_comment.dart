@@ -11,16 +11,37 @@ class UserComments {
 }
 
 class UserComment {
+  /// ID
   int id;
+
+  /// Charge Point ID
   int chargePointId;
+
+  /// Comment Type ID
   int commentTypeId;
+
+  /// Category for a user comment, e.g. General Comment, Fault Report (Notice To Users And Operator)
   UserCommentType? userCommentType;
+
+  /// User Name
   String userName;
+
+  /// Comment
   String? comment;
+
+  /// Related URL
   String? relatedUrl;
+
+  /// Date Created
   DateTime dateCreated;
+
+  /// Short public summary profile for a specific Open Charge Map user
   UserInfo? user;
+
+  /// Checkin Status Type ID
   int? checkinStatusTypeId;
+
+  /// Classification for the users comment or experience using a specific charging location.
   CheckinStatusType? checkinStatusType;
 
   UserComment.fromJson(Map json)
@@ -42,9 +63,16 @@ class UserComment {
 }
 
 class CheckinStatusType {
+  /// ID
   int id;
+
+  /// Title
   String title;
+
+  /// If true, checkin or comment was provided by an automated system.
   bool? isAutomatedCheckin;
+
+  /// If true, this type of checkin/comment is considered positive.
   bool? isPositive;
 
   CheckinStatusType.fromJson(Map json)
@@ -55,7 +83,10 @@ class CheckinStatusType {
 }
 
 class UserCommentType {
+  /// ID
   int id;
+
+  /// Title
   String title;
 
   UserCommentType.fromJson(Map json)

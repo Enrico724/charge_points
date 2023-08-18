@@ -7,10 +7,12 @@ import 'package:charge_points/src/model/poi.dart';
 import 'package:http/http.dart' as http;
 
 class ChargePointsClient {
+  /// API Key for requesting data
   final String key;
 
   ChargePointsClient(this.key);
 
+  /// Endpoint for requesting POI List
   Future<List<POI>> retrievePoiList(
     BoundingBox boundingBox,
     String countryCode,

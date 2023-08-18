@@ -11,16 +11,37 @@ class MediaItems {
 }
 
 class MediaItem {
+  /// ID
   int id;
+
+  /// Charge Point ID
   int chargePointId;
+
+  /// Item URL
   String itemURL;
+
+  /// Item Thumbnail URL
   String itemThumbnailURL;
+
+  /// Comment
   String comment;
+
+  /// Check if is Enabled
   bool isEnabled;
+
+  /// Check if is Video
   bool isVideo;
+
+  /// Check if is a Featured Item
   bool isFeaturedItem;
+
+  /// Check if is External Resource
   bool isExternalResource;
+
+  /// Short public summary profile for a specific Open Charge Map user
   UserInfo user;
+
+  /// Date Created
   DateTime dateCreated;
 
   MediaItem.fromJson(Map json)

@@ -7,20 +7,49 @@ class Connections {
 }
 
 class ConnectionInfo {
+  /// ID
   int id;
+
+  /// Connection Type ID
   int connectionTypeId;
+
+  /// The type of end-user connection an EVSE supports.
   ConnectionType connectionType;
+
+  /// Optional operators reference for this connection/port
   String? reference;
+
+  /// Status Type reference ID. 0 = Unknown
   int? statusTypeId;
+
+  /// The Status Type of a site or equipment item indicates whether it is generally operational.
   StatusType? statusType;
+
+  /// A general category for power capability. Depreceated in favour of documenting specific equipment power in kW.
   int? levelId;
+
+  /// A general category for equipment power capability. Deprecated for general use. Currently computed automatically based on equipment power.
   Level? level;
+
+  /// EVSE supply max current in Amps
   int? amps;
+
+  /// EVSE supply voltage
   int? voltage;
+
+  /// Peak available power in kW
   double? powerKw;
+
+  /// The supply type reference ID (e.g. DC etc)
   int? currentTypeId;
+
+  /// Indicates the EVSE power supply type e.g. DC (Direct Current), AC (Single Phase), AC (3 Phase).
   CurrentType? currentType;
+
+  /// Optional summary number of equipment items available with this specification
   int? quantity;
+
+  /// Comments
   String? comments;
 
   ConnectionInfo.fromJson(Map json)
@@ -46,10 +75,19 @@ class ConnectionInfo {
 }
 
 class ConnectionType {
+  /// Formal (standard) name for this connection type
   String? formalName;
+
+  /// If true, this is an discontinued but used connection type
   bool? isDiscontinued;
+
+  /// If true, this is an obsolete connection type and is unlikely top be present in modern infrastructure
   bool? isObsolete;
+
+  /// ID
   int id;
+
+  /// Title
   String title;
 
   ConnectionType.fromJson(Map json)
@@ -61,9 +99,16 @@ class ConnectionType {
 }
 
 class StatusType {
+  /// Tell if is operational
   bool? isOperational;
+
+  /// Tell if is user selectable
   bool isUserSelectable;
+
+  /// ID
   int id;
+
+  /// Title
   String title;
 
   StatusType.fromJson(Map json)
@@ -74,9 +119,16 @@ class StatusType {
 }
 
 class Level {
+  /// ID
   int id;
+
+  /// Title
   String title;
+
+  /// Comments
   String comments;
+
+  /// If true, this level is considered 'fast' charging, relative to other levels.
   bool isFastChargeCapable;
 
   Level.fromJson(Map json)
@@ -87,7 +139,10 @@ class Level {
 }
 
 class CurrentType {
+  /// ID
   int id;
+
+  /// Title
   String title;
 
   CurrentType.fromJson(Map json)
