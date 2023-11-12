@@ -65,7 +65,7 @@ class ConnectionInfo {
         level = json['Level'] == null ? null : Level.fromJson(json['Level']),
         amps = json['Amps'],
         voltage = json['Voltage'],
-        powerKw = json['PowerKW'],
+        powerKw = json['PowerKW'] == nul ? null: json['PowerKW'].toDouble(),
         currentTypeId = json['CurrentTypeID'],
         currentType = json['CurrentType'] == null
             ? null
